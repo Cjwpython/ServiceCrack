@@ -48,6 +48,3 @@ class TelnetCrack(BaseCrack):
                 return
             tn.close()
             self.result.append({"username": username, "password": password})
-
-
-

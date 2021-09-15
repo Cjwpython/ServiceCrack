@@ -22,11 +22,12 @@ class Smb2Crack(BaseCrack):
         logging.info(self.result)
 
     def crack(self, username, password):
-        logging.info("start use {} {}".format(username, password))
+        logging.debug("start use {} {}".format(username, password))
         success = 0
         try:
-            conn = smb.SMB('*SMBSERVER', remote_host=self.host, sess_port=self.port)
+            conn = smb.SMB('*SMBSERVER', remote_host=self.host, sess_port=self.port, timeout=self.timeout)
             conn.login(username, password)
+            print(conn.get_server_os())
             logging.info("brute success :{} {}".format(username, password))
             success = 1
         except Exception as e:
@@ -38,5 +39,3 @@ class Smb2Crack(BaseCrack):
                 return
             conn.close_session()
             self.result.append({"username": username, "password": password})
-
-

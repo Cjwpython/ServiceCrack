@@ -31,7 +31,7 @@ class FtpCrack(BaseCrack):
             logging.info("brute success :{} {}".format(username, password))
             success = 1
         except Exception as e:
-            logging.info(e)
+            logging.debug(e)
             logging.debug("brute faild:{} {}".format(username, password))
             ftp.quit()
         finally:
@@ -39,5 +39,3 @@ class FtpCrack(BaseCrack):
                 return
             ftp.quit()
             self.result.append({"username": username, "password": password})
-
-
