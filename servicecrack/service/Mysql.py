@@ -38,7 +38,6 @@ class MysqlCrack(BaseCrack):
         success = 0
         try:
             conn = pymysql.connect(host=self.host, port=self.port, user=username, password=password, connect_timeout=self.timeout)
-            self.logging.info("brute success :{} {}".format(username, password))
             self.logging.info(highlight("[+] found username:[{}] --- password:[{}]".format(username, password)))
             success = 1
         except Exception as e:
